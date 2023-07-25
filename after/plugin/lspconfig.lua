@@ -5,6 +5,7 @@ require("mason-lspconfig").setup {
 	automatic_installation = true,
 }
  require("lspconfig").intelephense.setup {}
+ require("lspconfig").tsserver.setup{}
 
 
 -- Setup language servers.

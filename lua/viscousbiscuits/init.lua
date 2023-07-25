@@ -25,6 +25,13 @@ use "williamboman/mason-lspconfig.nvim"
 use "neovim/nvim-lspconfig"
 use 'L3MON4D3/LuaSnip'
 use "saadparwaiz1/cmp_luasnip"
+use 'lewis6991/gitsigns.nvim'
+use 'jose-elias-alvarez/null-ls.nvim' -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
+use "rafamadriz/friendly-snippets"
+use "mfussenegger/nvim-dap"
+
+use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+
 
 use {
   'nvim-telescope/telescope.nvim', tag = '0.1.2',
@@ -37,4 +44,3 @@ use {
 }
 
 end)
-

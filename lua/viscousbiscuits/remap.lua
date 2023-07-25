@@ -19,6 +19,6 @@ vim.opt.autoindent = true
 vim.opt.expandtab = true
 vim.opt.autoindent = true
 vim.opt.cmdheight = 1
-vim.opt.scrolloff = 10
+vim.opt.scrolloff = 15
 vim.opt.breakindent = true
 vim.opt.wrap = false
