@@ -1,12 +1,5 @@
 require('viscousbiscuits.remap')
 
-
-require('lualine').setup {
-	options = { 
-		theme = 'tokyonight'
-	}
-}
-
 vim.cmd("set number")
 vim.cmd("set relativenumber")
 
@@ -29,9 +22,20 @@ use 'lewis6991/gitsigns.nvim'
 use 'jose-elias-alvarez/null-ls.nvim' -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
 use "rafamadriz/friendly-snippets"
 use "mfussenegger/nvim-dap"
+use "sindrets/diffview.nvim" 
+use 'theHamsta/nvim-dap-virtual-text'
+use 'simrat39/symbols-outline.nvim'
 
 use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
 
+use {
+    "ThePrimeagen/refactoring.nvim",
+    requires = {
+        {"nvim-lua/plenary.nvim"},
+        {"nvim-treesitter/nvim-treesitter"}
+    }
+}
+    
 
 use {
   'nvim-telescope/telescope.nvim', tag = '0.1.2',
@@ -42,5 +46,14 @@ use {
   'nvim-lualine/lualine.nvim',
   requires = { 'nvim-tree/nvim-web-devicons', opt = true }
 }
+
+-- I was unable to get the node dap working with mason so i'm using this.
+use {
+  "microsoft/vscode-js-debug",
+  opt = true,
+  run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out" 
+}
+
+use { "mxsdev/nvim-dap-vscode-js", requires = {"mfussenegger/nvim-dap"} }
 
 end)

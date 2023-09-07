@@ -1,3 +1,9 @@
+ function LineNumberColors()
+     vim.api.nvim_set_hl(0, 'LineNrAbove', { fg='#87948a', bold=false })
+     vim.api.nvim_set_hl(0, 'LineNr', { fg='#9aa391', bold=false })
+     vim.api.nvim_set_hl(0, 'LineNrBelow', { fg='#87948a', bold=false })
+ end
+
 require("tokyonight").setup({
   -- your configuration comes here
   -- or leave it empty to use the default settings
@@ -22,10 +28,15 @@ require("tokyonight").setup({
   dim_inactive = false, -- dims inactive windows
   lualine_bold = false, -- When `true`, section headers in the lualine theme will be bold
 
+
   --- You can override specific color groups to use other groups or a hex color
   --- function will be called with a ColorScheme table
   ---@param colors ColorScheme
-  on_colors = function(colors) end,
+  on_colors = function(colors)
+--        colors.fg_gutter = "#87948a"
+       -- colors.comment = "#606580"
+         LineNumberColors()
+    end,
 
   --- You can override specific highlights to use other groups or a hex color
   --- function will be called with a Highlights and ColorScheme table

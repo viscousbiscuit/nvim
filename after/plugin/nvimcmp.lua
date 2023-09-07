@@ -1,16 +1,14 @@
 local status, cmp = pcall(require, "cmp")
 if (not status) then return end
-local lspkind = require 'lspkind'
-local luasnip = require 'luasnip'
+local lspkind = require('lspkind')
+local luasnip = require('luasnip')
 
 require("luasnip.loaders.from_vscode").load()
 
 cmp.setup({
   snippet = {
     expand = function(args)
-
-
---      require('luasnip').lsp_expand(args.body)
+            luasnip.lsp_expand(args.body)
     end,
   },
    mapping = cmp.mapping.preset.insert({
