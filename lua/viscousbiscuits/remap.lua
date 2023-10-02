@@ -1,6 +1,7 @@
-vim.g.mapleader = " "
+
+vim.g.mapleader = ' '
 -- Open file editor in detached mode
-vim.keymap.set("n", "<leader>pv", vim.cmd.Sex)
+vim.keymap.set('n', '<leader>pv', vim.cmd.Sex)
 -- Set document as json and format
 vim.keymap.set('n', '<leader>fj', ':set syntax=json <BAR> :%!jq .<CR>');
 -- Split Screen
@@ -28,4 +29,3 @@ vim.opt.scrolloff = 15
 vim.opt.breakindent = true
 vim.opt.wrap = false
 vim.opt.splitright = true
-

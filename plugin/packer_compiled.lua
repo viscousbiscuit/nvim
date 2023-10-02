@@ -84,15 +84,20 @@ _G.packer_plugins = {
     path = "/Users/timothyvonhollen/.local/share/nvim/site/pack/packer/start/cmp-buffer",
     url = "https://github.com/hrsh7th/cmp-buffer"
   },
+  ["cmp-cmdline"] = {
+    loaded = true,
+    path = "/Users/timothyvonhollen/.local/share/nvim/site/pack/packer/start/cmp-cmdline",
+    url = "https://github.com/hrsh7th/cmp-cmdline"
+  },
   ["cmp-nvim-lsp"] = {
     loaded = true,
     path = "/Users/timothyvonhollen/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
-  cmp_luasnip = {
+  ["cmp-path"] = {
     loaded = true,
-    path = "/Users/timothyvonhollen/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
-    url = "https://github.com/saadparwaiz1/cmp_luasnip"
+    path = "/Users/timothyvonhollen/.local/share/nvim/site/pack/packer/start/cmp-path",
+    url = "https://github.com/hrsh7th/cmp-path"
   },
   ["diffview.nvim"] = {
     loaded = true,
@@ -189,6 +194,11 @@ _G.packer_plugins = {
     path = "/Users/timothyvonhollen/.local/share/nvim/site/pack/packer/start/refactoring.nvim",
     url = "https://github.com/ThePrimeagen/refactoring.nvim"
   },
+  ["symbols-outline.nvim"] = {
+    loaded = true,
+    path = "/Users/timothyvonhollen/.local/share/nvim/site/pack/packer/start/symbols-outline.nvim",
+    url = "https://github.com/simrat39/symbols-outline.nvim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/Users/timothyvonhollen/.local/share/nvim/site/pack/packer/start/telescope.nvim",
@@ -198,12 +208,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/timothyvonhollen/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
     url = "https://github.com/folke/tokyonight.nvim"
-  },
-  ["vscode-js-debug"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/Users/timothyvonhollen/.local/share/nvim/site/pack/packer/opt/vscode-js-debug",
-    url = "https://github.com/microsoft/vscode-js-debug"
   }
 }
 

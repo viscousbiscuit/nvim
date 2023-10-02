@@ -1,4 +1,4 @@
- function LineNumberColors()
+function LineNumberColors()
      vim.api.nvim_set_hl(0, 'LineNrAbove', { fg='#87948a', bold=false })
      vim.api.nvim_set_hl(0, 'LineNr', { fg='#9aa391', bold=false })
      vim.api.nvim_set_hl(0, 'LineNrBelow', { fg='#87948a', bold=false })

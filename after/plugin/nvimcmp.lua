@@ -1,4 +1,5 @@
 local status, cmp = pcall(require, "cmp")
+
 if (not status) then return end
 local lspkind = require('lspkind')
 local luasnip = require('luasnip')
@@ -43,6 +44,7 @@ cmp.setup({
     }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
+    { name = 'nvim_lsp_signature_help' }, 
     { name = 'luasnip'},
 --    { name = 'luasnip.loaders.from_vscode'}
   }),

@@ -1,7 +1,6 @@
 require('mason').setup()
 require("mason-lspconfig").setup {
 	ensure_installed = { "lua_ls", "tsserver", "intelephense" },
-
 	automatic_installation = true,
 }
  require("lspconfig").intelephense.setup {}
