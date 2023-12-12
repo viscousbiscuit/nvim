@@ -15,6 +15,10 @@ vim.keymap.set('', '<C-k>', '<C-w>k')
 vim.keymap.set('', '<C-j>', '<C-w>j')
 vim.keymap.set('', '<C-l>', '<C-w>l')
 
+-- replace
+--
+vim.keymap.set('n', '<leader>r', ':%s/');
+
 -- For code outline
 vim.keymap.set('n', '<leader>co', ':SymbolsOutline<Return>')
 
@@ -29,3 +33,20 @@ vim.opt.scrolloff = 15
 vim.opt.breakindent = true
 vim.opt.wrap = false
 vim.opt.splitright = true
+
+-- Telescope
+--
+local telescope = require('telescope.builtin')
+vim.keymap.set('n', '<leader>pf', telescope.find_files, {})
+vim.keymap.set('n', '<C-p', telescope.git_files, {})
+vim.keymap.set('n', '<leader>ps', function() 
+	telescope.grep_string({search = vim.fn.input("Grep > ") });
+end)
+
+vim.api.nvim_set_keymap(
+  "n",
+  "<space>fb",
+  ":Telescope file_browser path=%:p:h select_buffer=true<CR>",
+  { noremap = true }
+)
+

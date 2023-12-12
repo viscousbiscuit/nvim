@@ -1,7 +1,7 @@
 
 local opts = {
     auto_close = true,
-    autofold_depth = 2,
+    autofold_depth = 1,
     symbols = {
         Namespace = { icon = "", hl = "@namespace"},
     }

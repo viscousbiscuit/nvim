@@ -34,6 +34,19 @@ table.insert(snippets, ls.s('async_iterator', {
 }))
 
 
+-- Object.assign({}, { key : 'value'});
+
+table.insert(snippets, ls.s('object_assign', {
+    t('Object.assign('),
+    i(1),
+    t(", { "),
+    i(2),
+    t("  : '"),
+    i(0),
+    t("'});"),
+}));
+
+
 table.insert(snippets, s("class", {
 		-- Choice: Switch between two different Nodes, first parameter is its position, second a list of nodes.
 		c(1, {
