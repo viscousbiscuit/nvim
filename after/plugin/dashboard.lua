@@ -22,10 +22,10 @@ local db = require('dashboard')
            key = 'a',
          },
          {
-           desc = ' dotfiles',
+           desc = ' Marks',
            group = 'Number',
-           action = 'Telescope dotfiles',
-           key = 'd',
+           action = 'Telescope marks',
+           key = 'm',
          },
        },
        footer = {}
