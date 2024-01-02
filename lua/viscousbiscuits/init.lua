@@ -10,16 +10,10 @@ use 'williamboman/mason-lspconfig.nvim'
 use 'wbthomason/packer.nvim'
 
 -- Startup
-use {
-  'nvimdev/dashboard-nvim',
-  event = 'VimEnter',
-  config = function()
-    require('dashboard').setup {
-      -- config
-    }
-  end,
-  requires = {'nvim-tree/nvim-web-devicons'}
-}
+ use {
+   'nvimdev/dashboard-nvim',
+   requires = {'nvim-tree/nvim-web-devicons'}
+ }
 
 -- Theme and UI/UX
 use 'folke/tokyonight.nvim' 
