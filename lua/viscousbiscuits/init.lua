@@ -15,6 +15,9 @@ use 'wbthomason/packer.nvim'
    requires = {'nvim-tree/nvim-web-devicons'}
  }
 
+-- Time Tracking
+use 'wakatime/vim-wakatime'
+
 -- Theme and UI/UX
 use 'folke/tokyonight.nvim' 
 
@@ -31,6 +34,8 @@ use {
     "nvim-telescope/telescope-file-browser.nvim",
     requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
 } 
+use 'jvgrootveld/telescope-zoxide'
+
 use 'nvim-tree/nvim-web-devicons'
 use 'L3MON4D3/LuaSnip'
 use 'lewis6991/gitsigns.nvim'
@@ -51,7 +56,7 @@ use 'saadparwaiz1/cmp_luasnip'
 -- DAP plugins
 use 'theHamsta/nvim-dap-virtual-text'
 use 'mfussenegger/nvim-dap'
-use 'simrat39/symbols-outline.nvim'
+use 'stevearc/aerial.nvim'
 use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
 use { "mxsdev/nvim-dap-vscode-js", requires = {"mfussenegger/nvim-dap"} }
 
