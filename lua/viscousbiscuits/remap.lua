@@ -9,6 +9,8 @@ vim.keymap.set('n', '<leader>ss', ':split<Return><C-w>w')
 -- vim.keymap.set('n', 'sv', ':vsplit<Return><C-w>w')
 vim.keymap.set('n', '<leader>sv', ':vnew<Return>');
 -- Move wndow
+vim.keymap.set('n', '<leader>tr', ':Telescope resume<Return>');
+
 vim.keymap.set('n', '<Space>', '<C-w>w')
 vim.keymap.set('n', '<C-h>', '<C-w>h')
 vim.keymap.set('n', '<C-k>', '<C-w>k')
@@ -21,12 +23,11 @@ vim.keymap.set('n', '<leader>bn', ':enew<return>')
 
 
 -- replace
---
 vim.keymap.set('n', '<leader>r', ':%s/');
 
 -- For code outline
 vim.keymap.set("n", "<leader>co", "<cmd>AerialToggle!<CR>")
-
+vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle) 
 
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
@@ -48,8 +49,6 @@ vim.keymap.set('n', '<C-p', telescope.git_files, {})
 vim.keymap.set('n', '<leader>ps', function() 
 	telescope.grep_string({search = vim.fn.input("Grep > ") });
 end)
-
-vim.keymap.set("n", "<leader>cd", require("telescope").extensions.zoxide.list)
 
 vim.api.nvim_set_keymap(
   "n",

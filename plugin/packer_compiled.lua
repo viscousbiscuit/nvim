@@ -79,6 +79,11 @@ _G.packer_plugins = {
     path = "/Users/timothyvonhollen/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  ["aerial.nvim"] = {
+    loaded = true,
+    path = "/Users/timothyvonhollen/.local/share/nvim/site/pack/packer/start/aerial.nvim",
+    url = "https://github.com/stevearc/aerial.nvim"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/Users/timothyvonhollen/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -199,11 +204,6 @@ _G.packer_plugins = {
     path = "/Users/timothyvonhollen/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
-  ["symbols-outline.nvim"] = {
-    loaded = true,
-    path = "/Users/timothyvonhollen/.local/share/nvim/site/pack/packer/start/symbols-outline.nvim",
-    url = "https://github.com/simrat39/symbols-outline.nvim"
-  },
   ["telescope-file-browser.nvim"] = {
     loaded = true,
     path = "/Users/timothyvonhollen/.local/share/nvim/site/pack/packer/start/telescope-file-browser.nvim",
@@ -218,6 +218,16 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/timothyvonhollen/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
     url = "https://github.com/folke/tokyonight.nvim"
+  },
+  undotree = {
+    loaded = true,
+    path = "/Users/timothyvonhollen/.local/share/nvim/site/pack/packer/start/undotree",
+    url = "https://github.com/mbbill/undotree"
+  },
+  ["vim-wakatime"] = {
+    loaded = true,
+    path = "/Users/timothyvonhollen/.local/share/nvim/site/pack/packer/start/vim-wakatime",
+    url = "https://github.com/wakatime/vim-wakatime"
   }
 }
 

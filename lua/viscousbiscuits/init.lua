@@ -29,12 +29,17 @@ use {
     end,
 }
 
+use 'mbbill/undotree' 
+
 use { 'nvim-telescope/telescope.nvim', requires = { {'nvim-lua/plenary.nvim'} }}
 use {
     "nvim-telescope/telescope-file-browser.nvim",
     requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
 } 
-use 'jvgrootveld/telescope-zoxide'
+use {
+    "gbrlsnchs/telescope-lsp-handlers.nvim",
+    requires = { "nvim-telescope/telescope.nvim"}
+    }
 
 use 'nvim-tree/nvim-web-devicons'
 use 'L3MON4D3/LuaSnip'
