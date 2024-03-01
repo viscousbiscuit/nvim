@@ -1,11 +1,11 @@
 require('mason').setup()
 require("mason-lspconfig").setup {
-	ensure_installed = { "lua_ls", "tsserver", "intelephense" },
+	ensure_installed = { "lua_ls", "tsserver", "intelephense", "gopls" },
 	automatic_installation = true,
 }
  require("lspconfig").intelephense.setup {}
  require("lspconfig").tsserver.setup{}
-
+ require("lspconfig").gopls.setup{}
 
 -- Setup language servers.
 -- Global mappings.
