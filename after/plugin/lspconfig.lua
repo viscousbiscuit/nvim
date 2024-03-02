@@ -6,6 +6,8 @@ require("mason-lspconfig").setup {
  require("lspconfig").intelephense.setup {}
  require("lspconfig").tsserver.setup{}
  require("lspconfig").gopls.setup{}
+ require("lspconfig").graphql.setup{}
+ require("lspconfig").yamlls.setup{}
 
 -- Setup language servers.
 -- Global mappings.

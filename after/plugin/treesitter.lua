@@ -11,7 +11,9 @@
                   "yaml",
                   "css",
                   "html",
-                  "go"
+                  "go",
+                  "yaml",
+                  "graphql"
                 }
             })
 
