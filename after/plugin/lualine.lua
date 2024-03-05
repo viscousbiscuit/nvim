@@ -1,6 +1,8 @@
 require('lualine').setup {
     sections = {
-        lualine_c = { "aerial" }
+
+        lualine_b = {  "filename" },
+        lualine_c = { "aerial"  },
     },
 	options = { 
 		theme = 'tokyonight',

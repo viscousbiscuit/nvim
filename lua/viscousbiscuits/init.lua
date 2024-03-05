@@ -19,7 +19,7 @@ local plugins = {
     { 'wakatime/vim-wakatime' },
     { 'folke/tokyonight.nvim' },
     { 'nvim-treesitter/nvim-treesitter', build = ":TSUpdate" },
-    { 'mbbill/undotree', lazy = true },
+    { 'mbbill/undotree'},
     { 'nvim-lua/plenary.nvim' },
     { 'nvim-telescope/telescope.nvim' },
     { 'nvim-telescope/telescope-file-browser.nvim', lazy = true },
