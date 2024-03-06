@@ -11,7 +11,10 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+local copilot = require("../plugins/copilot")
+
 local plugins = {
+    copilot,
     { 'nvimdev/dashboard-nvim', lazy = false },
     { 'nvim-tree/nvim-web-devicons', lazy = true },
     { 'williamboman/mason.nvim' },
@@ -39,11 +42,12 @@ local plugins = {
     { 'hrsh7th/cmp-nvim-lsp-signature-help'},
     { 'saadparwaiz1/cmp_luasnip'},
     { 'theHamsta/nvim-dap-virtual-text' },
+    { 'leoluz/nvim-dap-go' },
     { 'mfussenegger/nvim-dap', lazy = true },
     { 'stevearc/aerial.nvim' },
     { 'mfussenegger/nvim-dap' },
     { 'rcarriga/nvim-dap-ui' },
-    { 'mxsdev/nvim-dap-vscode-js' }
+    { 'mxsdev/nvim-dap-vscode-js' },
 }
 
 require("lazy").setup(plugins, opts)
