@@ -12,10 +12,11 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local copilot = require("../plugins/copilot")
+local dashboard = require("../plugins/dashboard")
 
 local plugins = {
     copilot,
-    { 'nvimdev/dashboard-nvim', lazy = false },
+    dashboard,
     { 'nvim-tree/nvim-web-devicons', lazy = true },
     { 'williamboman/mason.nvim' },
     { 'williamboman/mason-lspconfig.nvim' },

@@ -1,5 +1,7 @@
-local db = require('dashboard')  
- db.setup({
+return {
+ 'nvimdev/dashboard-nvim', 
+ lazy = false,
+    opts = {
      theme = 'hyper',
      config = {
        week_header = {
@@ -30,4 +32,6 @@ local db = require('dashboard')
        },
        footer = {}
      },
-   })
+   }
+
+}
