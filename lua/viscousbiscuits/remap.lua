@@ -21,6 +21,11 @@ vim.keymap.set('n', '<C-l>', '<C-w>l')
 vim.keymap.set('n', '<leader>b', ':b<space><tab>')
 vim.keymap.set('n', '<leader>bn', ':enew<return>')
 
+-- black hole delete and clipboard yank
+vim.keymap.set('n', '<leader>d', '"_')
+vim.keymap.set('v', '<leader>d', '"_')
+vim.keymap.set('n', '<leader>y', '"*')
+vim.keymap.set('v', '<leader>y', '"*')
 
 -- replace
 vim.keymap.set('n', '<leader>r', ':%s/');
