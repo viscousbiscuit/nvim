@@ -13,6 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 local copilot = require("../plugins/copilot")
 local dashboard = require("../plugins/dashboard")
+local dashboard = require("../plugins/neorg")
 
 local plugins = {
     copilot,
@@ -49,6 +50,7 @@ local plugins = {
     { 'mfussenegger/nvim-dap' },
     { 'rcarriga/nvim-dap-ui' },
     { 'mxsdev/nvim-dap-vscode-js' },
+    neorg,
 }
 
 require("lazy").setup(plugins, opts)
