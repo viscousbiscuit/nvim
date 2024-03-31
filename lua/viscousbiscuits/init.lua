@@ -14,10 +14,12 @@ vim.opt.rtp:prepend(lazypath)
 local copilot = require("../plugins/copilot")
 local dashboard = require("../plugins/dashboard")
 local dashboard = require("../plugins/neorg")
+local symbolUsage = require("../plugins/symbol-usage")
 
 local plugins = {
     copilot,
     dashboard,
+    symbolUsage,
     { 'nvim-tree/nvim-web-devicons', lazy = true },
     { 'williamboman/mason.nvim' },
     { 'williamboman/mason-lspconfig.nvim' },
@@ -48,7 +50,7 @@ local plugins = {
     { 'mfussenegger/nvim-dap', lazy = true },
     { 'stevearc/aerial.nvim' },
     { 'mfussenegger/nvim-dap' },
-    { 'rcarriga/nvim-dap-ui' },
+    { "rcarriga/nvim-dap-ui", dependencies = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"} },
     { 'mxsdev/nvim-dap-vscode-js' },
     neorg,
 }
