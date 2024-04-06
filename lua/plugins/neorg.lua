@@ -1,9 +1,8 @@
 return {
   "nvim-neorg/neorg",
-  dependencies = { "nvim-lua/plenary.nvim" },
-  build = ":Neorg sync-parsers",
-  -- tag = "*",
-  lazy = true, -- enable lazy load
+  dependencies = { "nvim-lua/plenary.nvim", "luarocks.nvim" },
+  version = "*",
+  lazy = false, -- enable lazy load
   ft = "norg", -- lazy load on file type
   cmd = "Neorg", -- lazy load on command
   config = function()

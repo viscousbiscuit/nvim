@@ -20,7 +20,7 @@ vim.keymap.set('n', '<C-l>', '<C-w>l')
 
 
 vim.keymap.set('n', '<leader>b', ':b<space><tab>')
-vim.keymap.set('n', '<leader>bn', ':enew<return>')
+vim.keymap.set('n', '<leader>bn', ':enew<return> | :file ')
 
 -- black hole delete and clipboard yank
 vim.keymap.set('n', '<leader>d', '"_')
