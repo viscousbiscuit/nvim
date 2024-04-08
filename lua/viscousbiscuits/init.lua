@@ -61,7 +61,7 @@ local plugins = {
         priority = 1000,
         config = true,
     },
-    neorg,
+    neorg
 }
 require("lazy").setup(plugins, {})
 require('viscousbiscuits.remap')
