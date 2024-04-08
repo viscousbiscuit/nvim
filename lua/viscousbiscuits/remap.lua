@@ -1,4 +1,3 @@
-
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 -- Open file editor in detached mode
@@ -33,7 +32,7 @@ vim.keymap.set('n', '<leader>r', ':%s/');
 
 -- For code outline
 vim.keymap.set("n", "<leader>co", "<cmd>AerialToggle!<CR>")
-vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle) 
+vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
@@ -53,14 +52,28 @@ vim.opt.backupcopy = "yes"
 local telescope = require('telescope.builtin')
 vim.keymap.set('n', '<leader>pf', telescope.find_files, {})
 vim.keymap.set('n', '<C-p', telescope.git_files, {})
-vim.keymap.set('n', '<leader>ps', function() 
-	telescope.grep_string({search = vim.fn.input("Grep > ") });
+vim.keymap.set('n', '<leader>ps', function()
+    telescope.grep_string({ search = vim.fn.input("Grep > ") });
 end)
 
-vim.api.nvim_set_keymap(
-  "n",
-  "<space>fb",
-  ":Telescope file_browser path=%:p:h select_buffer=true<CR>",
-  { noremap = true }
-)
+ local scratch = require("../plugins/scratch").scratch
+ local exec = require("../plugins/scratch").executeScript
+ local findFiles = require("../plugins/scratch").findFiles
+ vim.keymap.set('n', '<leader>sn', scratch)
+ vim.keymap.set('n', '<leader>se', exec)
+ vim.keymap.set('n', '<leader>sf', findFiles)
 
+
+vim.keymap.set('i', '<C-J>', 'copilot#Accept("\\<CR>")', {
+    expr = true,
+    replace_keycodes = false
+})
+vim.g.copilot_no_tab_map = true
+
+
+vim.api.nvim_set_keymap(
+    "n",
+    "<space>fb",
+    ":Telescope file_browser path=%:p:h select_buffer=true<CR>",
+    { noremap = true }
+)
