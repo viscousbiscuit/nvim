@@ -1,9 +1,9 @@
 local dap = require('dap')
 require('mason').setup()
 
-require('dap-vscode-js').setup({
-  adapters = { 'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost' }, -- which adapters to register in nvim-dap
-})
+--require('dap-vscode-js').setup({
+--  adapters = { 'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost' }, -- which adapters to register in nvim-dap
+--})
 
 
 require('dap-go').setup {
@@ -48,6 +48,25 @@ require('dap-go').setup {
 -- language config
 for _, language in ipairs({ 'typescript', 'javascript' }) do
     dap.configurations[language] = {
+        {
+            name = 'Attach to port 9229',
+            type = 'pwa-node',
+            request = 'attach',
+            port = 9229,
+            restart = true,
+            address = "localhost",
+            trace = true,
+            protocol = "inspector",
+            skipFiles = { '<node_internals>/**' },
+            program = "${workspaceFolder}/src/main.ts",
+            envFile =  "${workspaceFolder}/.env",
+            preLaunchTask = "tsc: build - tsconfig.json",
+            resolveSourceMapLocations = {"${workspaceFolder}/build/src/**", "!**/node_modules/**"},
+            remoteRoot = "/app",
+            localRoot = "${workspaceFolder}",
+            outFiles =  {"${workspaceFolder}/build/src/**/*.js", "${workspaceFolder}/build/src/**/*.json"},
+            cwd = '${workspaceFolder}',
+        },
         {
             name = 'Launch TS',
             type = 'pwa-node',

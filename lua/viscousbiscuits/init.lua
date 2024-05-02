@@ -14,16 +14,17 @@ vim.opt.rtp:prepend(lazypath)
 local copilot = require("../plugins/copilot")
 local dashboard = require("../plugins/dashboard")
 local neorg = require("../plugins/neorg")
-local symbolUsage = require("../plugins/symbol-usage")
+-- local symbolUsage = require("../plugins/symbol-usage")
 local treeSitter = require("../plugins/treesitter")
 local theme = require("../plugins/theme")
 local telescope = require("../plugins/telescope")
 local lspconfig = require("../plugins/lspconfig")
+local nonels = require("../plugins/nonels")
 
 local plugins = {
     copilot,
     dashboard,
-    symbolUsage,
+  --  symbolUsage,
     treeSitter,
     { 'nvim-tree/nvim-web-devicons',      lazy = true },
     { 'williamboman/mason.nvim' },
@@ -55,12 +56,12 @@ local plugins = {
     { 'stevearc/aerial.nvim' },
     { 'mfussenegger/nvim-dap' },
     { "rcarriga/nvim-dap-ui",               dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
-    { 'mxsdev/nvim-dap-vscode-js' },
     {
         "vhyrro/luarocks.nvim",
         priority = 1000,
         config = true,
     },
+    -- nonels,
     neorg
 }
 require("lazy").setup(plugins, {})

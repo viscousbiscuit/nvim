@@ -7,7 +7,32 @@ return {
             automatic_installation = true,
         }
         require("lspconfig").intelephense.setup {}
-        require("lspconfig").tsserver.setup {}
+        require("lspconfig").tsserver.setup {
+        --    eslint = {
+        --        settings = {
+        --            -- helps eslint find the eslintrc when it's placed in a subfolder instead of the cwd root
+        --            workingDirectories = { mode = 'auto' },
+        --        },
+        --        on_attach = function(client, bufnr)
+        --            vim.api.nvim_create_autocmd('BufWritePre', {
+        --                buffer = bufnr,
+        --                command = 'EslintFixAll',
+        --            })
+        --            -- Set a buffer variable to indicate that the autocmd is set
+        --            vim.api.nvim_buf_set_var(bufnr, 'eslint_fix_all_set', true)
+        --        end,
+        --    },
+        --    tsserver = {
+        --        on_attach = function(client, bufnr)
+        --            client.resolved_capabilities.document_formatting = false
+        --            client.resolved_capabilities.document_range_formatting = false
+
+        --            -- Setup typescript-tools within tsserver on_attach
+        --            local ts_utils = require 'typescript-tools.utils'
+        --            ts_utils.setup_client(client)
+        --        end,
+        --    },
+        }
         require("lspconfig").gopls.setup {}
         require("lspconfig").graphql.setup {}
         require("lspconfig").yamlls.setup {}

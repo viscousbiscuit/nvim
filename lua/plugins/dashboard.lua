@@ -8,7 +8,7 @@ return {
         enable = true,
        },
        shortcut = {
-         { desc = '󰊳 Update', group = '@property', action = 'PackerUpdate', key = 'u' },
+         { desc = '󰊳 Update', group = '@property', action = 'Lazy update', key = 'u' },
          {
            icon = ' ',
            icon_hl = '@variable',
@@ -18,10 +18,10 @@ return {
            key = 'f',
          },
          {
-           desc = ' Apps',
+           desc = ' Scratch',
            group = 'DiagnosticHint',
-           action = 'Telescope app',
-           key = 'a',
+           action = '<leader>sn',
+           key = 's',
          },
          {
            desc = ' Marks',
