@@ -1,11 +1,11 @@
-local telescope = require('telescope.builtin')
-local pickers = require "telescope.pickers"
-local finders = require "telescope.finders"
-local actions = require "telescope.actions"
+local telescope = require("telescope.builtin")
+local pickers = require("telescope.pickers")
+local finders = require("telescope.finders")
+local actions = require("telescope.actions")
 local conf = require("telescope.config").values
-local action_state = require 'telescope.actions.state'
+local action_state = require("telescope.actions.state")
 
-local workspace = '~/scratch';
+local workspace = "~/scratch"
 
 local langs = {
     go = {
@@ -15,7 +15,7 @@ local langs = {
     javascript = {
         name = "javascript",
         ext = "js",
-        execute = "w !node"
+        execute = "w !node",
     },
     json = {
         name = "json",
@@ -25,6 +25,11 @@ local langs = {
         name = "php",
         ext = "php",
     },
+    sql = {
+        name = "sql",
+        ext = "sql",
+    },
+
     typescript = {
         name = "typescript",
         ext = "ts",
@@ -34,7 +39,6 @@ local displayLangs = {}
 for _, lang in pairs(langs) do
     table.insert(displayLangs, lang.name)
 end
-
 
 local split = function(inputstr, sep)
     if sep == nil then
@@ -65,53 +69,53 @@ local checkDir = function(path)
 end
 
 local setFilename = function(matchedLang, fileName)
-    local path = string.format("%s/%s/",
-        workspace,
-        matchedLang.ext)
-    local file = string.format("%s.%s",
-        fileName,
-        matchedLang.ext)
+    local path = string.format("%s/%s/", workspace, matchedLang.ext)
+    local file = string.format("%s.%s", fileName, matchedLang.ext)
     checkDir(path)
     vim.cmd(string.format(":edit %s", path .. file))
 end
 
 local scratch = function()
-    pickers.new({
-        theme = "dropdown",
-    }, {
-        prompt_title = "New Buffer",
-        finder = finders.new_table {
-            results = displayLangs,
-        },
-        attach_mappings = function(prompt_bufnr, _)
-            actions.select_default:replace(function()
-                actions.close(prompt_bufnr)
-                local selection = action_state.get_selected_entry()
-                local inputTxt = action_state.get_current_line()
-                if selection == nil then
-                    vim.cmd(":enew")
-                    local filenameParts = split(inputTxt, ".")
-                    if #filenameParts > 1 then
-                        local matchedLang = findLang(filenameParts[#filenameParts])
-                        if matchedLang ~= nil then
-                            setFilename(matchedLang, filenameParts[1])
-                            vim.cmd(string.format(":setf %s", matchedLang.name))
+    pickers
+        .new({
+            theme = "dropdown",
+        }, {
+            prompt_title = "New Buffer",
+            finder = finders.new_table({
+                results = displayLangs,
+            }),
+            attach_mappings = function(prompt_bufnr, _)
+                actions.select_default:replace(function()
+                    actions.close(prompt_bufnr)
+                    local selection = action_state.get_selected_entry()
+                    local inputTxt = action_state.get_current_line()
+                    if selection == nil then
+                        vim.cmd(":enew")
+                        local filenameParts = split(inputTxt, ".")
+                        if #filenameParts > 1 then
+                            local matchedLang = findLang(filenameParts[#filenameParts])
+                            if matchedLang ~= nil then
+                                setFilename(matchedLang, filenameParts[1])
+                                vim.cmd(string.format(":setf %s", matchedLang.name))
+                            end
+                        else
+                            vim.cmd(string.format(":edit %s", inputTxt))
                         end
                     else
-                        vim.cmd(string.format(":edit %s", inputTxt))
+                        vim.cmd(":enew")
+                        local matchedLang = langs[selection.value]
+                        setFilename(
+                            matchedLang,
+                            string.format("%s_%s_%s", matchedLang.ext, "scratch", os.date("%Y_%m_%d_%H%M%S"))
+                        )
+                        vim.cmd(string.format(":setf %s", matchedLang.name))
                     end
-                else
-                    vim.cmd(":enew")
-                    local matchedLang = langs[selection.value]
-                    setFilename(matchedLang,
-                        string.format("%s_%s_%s", matchedLang.ext, "scratch", os.date("%Y_%m_%d_%H%M%S")))
-                    vim.cmd(string.format(":setf %s", matchedLang.name))
-                end
-            end)
-            return true
-        end,
-        sorter = conf.generic_sorter({}),
-    }):find()
+                end)
+                return true
+            end,
+            sorter = conf.generic_sorter({}),
+        })
+        :find()
 end
 
 local executeScript = function()
@@ -128,13 +132,11 @@ local executeScript = function()
 end
 
 local findFiles = function()
-    telescope.find_files({ cwd = "~/scratch" });
+    telescope.find_files({ cwd = "~/scratch" })
 end
-
 
 return {
     scratch = scratch,
     executeScript = executeScript,
     findFiles = findFiles,
-
 }

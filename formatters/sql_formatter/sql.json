@@ -1,0 +1,7 @@
+{
+  "keywordCase": "lower",
+  "dataTypeCase": "lower",
+  "identifierCase": "lower",
+  "functionCase ": "lower",
+  "linesBetweenQueries": 2
+}

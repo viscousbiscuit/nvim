@@ -169,7 +169,7 @@ dap.configurations.php = {
 }
 
 
-require("dapui").setup()
+--require("dapui").setup()
 
 vim.fn.sign_define('DapBreakpoint',{ text ='󱠇', texthl ='', linehl ='', numhl =''})
 vim.fn.sign_define('DapStopped',{ text ='', texthl ='', linehl ='', numhl =''})
@@ -185,42 +185,7 @@ vim.keymap.set('n', '<F5>', function() require('dap').continue() end)
 vim.api.nvim_set_keymap('n', '<Leader>de', [[:lua require("dapui").eval()<CR>]], { noremap = true})
 
 
-    vim.keymap.set({'n', 'v'}, '<Leader>dh', function()
-      require('dap.ui.widgets').hover()
-    end)
-    vim.keymap.set({'n', 'v'}, '<Leader>dp', function()
-      require('dap.ui.widgets').preview()
-    end)
-    vim.keymap.set('n', '<Leader>df', function()
-      local widgets = require('dap.ui.widgets')
-      widgets.centered_float(widgets.frames)
-    end)
-    vim.keymap.set('n', '<Leader>ds', function()
-      local widgets = require('dap.ui.widgets')
-      widgets.centered_float(widgets.scopes)
-    end)
-
-
-
-
-
-
-local dap, dapui = require("dap"), require("dapui")
-dap.listeners.before.event_terminated["dap"] = function()
-    print('dap before.event_terminated')
-  -- dapui.close()
-end
-
-
-dap.listeners.after.event_initialized['dap'] = function()
-    print('dap after.event_initialized')
-   dapui.open()
-end
-
-dap.listeners.before.event_exited["dap"] = function()
-    print('dap before.event_exited')
-  -- dapui.close()
-end
+    
 
 -- for inline debugging comments
 require("nvim-dap-virtual-text").setup {

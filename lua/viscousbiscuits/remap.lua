@@ -48,7 +48,6 @@ vim.opt.splitright = true
 vim.opt.backupcopy = "yes"
 
 -- Telescope
---
 local telescope = require('telescope.builtin')
 vim.keymap.set('n', '<leader>pf', telescope.find_files, {})
 vim.keymap.set('n', '<C-p', telescope.git_files, {})
@@ -56,12 +55,12 @@ vim.keymap.set('n', '<leader>ps', function()
     telescope.grep_string({ search = vim.fn.input("Grep > ") });
 end)
 
- local scratch = require("../plugins/scratch").scratch
- local exec = require("../plugins/scratch").executeScript
- local findFiles = require("../plugins/scratch").findFiles
- vim.keymap.set('n', '<leader>sn', scratch)
- vim.keymap.set('n', '<leader>se', exec)
- vim.keymap.set('n', '<leader>sf', findFiles)
+local scratch = require("../plugins/scratch").scratch
+local exec = require("../plugins/scratch").executeScript
+local findFiles = require("../plugins/scratch").findFiles
+vim.keymap.set('n', '<leader>sn', scratch)
+vim.keymap.set('n', '<leader>se', exec)
+vim.keymap.set('n', '<leader>sf', findFiles)
 
 
 vim.keymap.set('i', '<C-J>', 'copilot#Accept("\\<CR>")', {
@@ -77,3 +76,10 @@ vim.api.nvim_set_keymap(
     ":Telescope file_browser path=%:p:h select_buffer=true<CR>",
     { noremap = true }
 )
+
+-- Formatter
+vim.keymap.set('n', '<leader>ff', vim.lsp.buf.format, {})
+
+-- DAP
+--vim.keymap.set({ "n", "<Leader>dro", ":lua require('dap').repl.open()<CR>" })
+vim.keymap.set("n", "<Leader>dro", ":lua require('dap').repl.open({}, 'rightbelow split')<CR>")

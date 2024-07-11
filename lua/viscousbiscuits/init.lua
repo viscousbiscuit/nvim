@@ -12,6 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local copilot = require("../plugins/copilot")
+local copilotChat = require("../plugins/copilot-chat")
 local dashboard = require("../plugins/dashboard")
 local neorg = require("../plugins/neorg")
 -- local symbolUsage = require("../plugins/symbol-usage")
@@ -20,12 +21,17 @@ local theme = require("../plugins/theme")
 local telescope = require("../plugins/telescope")
 local lspconfig = require("../plugins/lspconfig")
 local nonels = require("../plugins/nonels")
+local indentBlankline = require("../plugins/indent-blankline")
+local dapUI = require("../plugins/dap-ui")
 
 local plugins = {
     copilot,
+    copilotChat,
     dashboard,
   --  symbolUsage,
     treeSitter,
+-- for scope highlighting
+--    indentBlankline,
     { 'nvim-tree/nvim-web-devicons',      lazy = true },
     { 'williamboman/mason.nvim' },
     { 'williamboman/mason-lspconfig.nvim' },
@@ -61,8 +67,9 @@ local plugins = {
         priority = 1000,
         config = true,
     },
-    -- nonels,
-    neorg
+    nonels,
+    neorg,
+    dapUI
 }
 require("lazy").setup(plugins, {})
 require('viscousbiscuits.remap')
