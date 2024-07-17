@@ -29,7 +29,6 @@ local langs = {
         name = "sql",
         ext = "sql",
     },
-
     typescript = {
         name = "typescript",
         ext = "ts",
