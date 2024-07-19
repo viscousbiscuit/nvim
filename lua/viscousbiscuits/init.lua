@@ -15,7 +15,6 @@ local copilot = require("../plugins/copilot")
 local copilotChat = require("../plugins/copilot-chat")
 local dashboard = require("../plugins/dashboard")
 local neorg = require("../plugins/neorg")
--- local symbolUsage = require("../plugins/symbol-usage")
 local treeSitter = require("../plugins/treesitter")
 local theme = require("../plugins/theme")
 local telescope = require("../plugins/telescope")
@@ -28,39 +27,39 @@ local plugins = {
     copilot,
     copilotChat,
     dashboard,
-  --  symbolUsage,
+    --  symbolUsage,
     treeSitter,
--- for scope highlighting
---    indentBlankline,
-    { 'nvim-tree/nvim-web-devicons',      lazy = true },
-    { 'williamboman/mason.nvim' },
-    { 'williamboman/mason-lspconfig.nvim' },
-    { 'wakatime/vim-wakatime' },
+    -- for scope highlighting
+    --  indentBlankline,
+    { "nvim-tree/nvim-web-devicons",      lazy = true },
+    { "williamboman/mason.nvim" },
+    { "williamboman/mason-lspconfig.nvim" },
+    { "wakatime/vim-wakatime" },
     theme,
-    { 'mbbill/undotree' },
-    { 'nvim-lua/plenary.nvim' },
+    { "mbbill/undotree" },
+    { "nvim-lua/plenary.nvim" },
     telescope,
-    { 'nvim-telescope/telescope-file-browser.nvim', lazy = true },
-    { 'gbrlsnchs/telescope-lsp-handlers.nvim' },
-    { 'nvim-tree/nvim-web-devicons',                lazy = true },
-    { 'L3MON4D3/LuaSnip' },
-    { 'lewis6991/gitsigns.nvim' },
-    { 'onsails/lspkind-nvim' },
-    { 'nvim-lualine/lualine.nvim' },
+    { "nvim-telescope/telescope-file-browser.nvim", lazy = true },
+    { "gbrlsnchs/telescope-lsp-handlers.nvim" },
+    { "nvim-tree/nvim-web-devicons",                lazy = true },
+    { "L3MON4D3/LuaSnip" },
+    { "lewis6991/gitsigns.nvim" },
+    { "onsails/lspkind-nvim" },
+    { "nvim-lualine/lualine.nvim" },
     lspconfig,
-    { 'jose-elias-alvarez/null-ls.nvim' },
-    { 'hrsh7th/nvim-cmp' },
-    { 'hrsh7th/cmp-nvim-lsp' },
-    { 'hrsh7th/cmp-buffer' },
-    { 'hrsh7th/cmp-path' },
-    { 'hrsh7th/cmp-cmdline' },
-    { 'hrsh7th/cmp-nvim-lsp-signature-help' },
-    { 'saadparwaiz1/cmp_luasnip' },
-    { 'theHamsta/nvim-dap-virtual-text' },
-    { 'leoluz/nvim-dap-go' },
-    { 'mfussenegger/nvim-dap',              lazy = true },
-    { 'stevearc/aerial.nvim' },
-    { 'mfussenegger/nvim-dap' },
+    { "jose-elias-alvarez/null-ls.nvim" },
+    { "hrsh7th/nvim-cmp" },
+    { "hrsh7th/cmp-nvim-lsp" },
+    { "hrsh7th/cmp-buffer" },
+    { "hrsh7th/cmp-path" },
+    { "hrsh7th/cmp-cmdline" },
+    { "hrsh7th/cmp-nvim-lsp-signature-help" },
+    { "saadparwaiz1/cmp_luasnip" },
+    { "theHamsta/nvim-dap-virtual-text" },
+    { "leoluz/nvim-dap-go" },
+    { "mfussenegger/nvim-dap",              lazy = true },
+    { "stevearc/aerial.nvim" },
+    { "mfussenegger/nvim-dap" },
     { "rcarriga/nvim-dap-ui",               dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
     {
         "vhyrro/luarocks.nvim",
@@ -69,10 +68,10 @@ local plugins = {
     },
     nonels,
     neorg,
-    dapUI
+    dapUI,
 }
 require("lazy").setup(plugins, {})
-require('viscousbiscuits.remap')
+require("viscousbiscuits.remap")
 
 vim.cmd("set number")
 vim.cmd("set relativenumber")
