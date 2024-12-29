@@ -1,14 +1,10 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
--- Open file editor in detached mode
 vim.keymap.set('n', '<leader>pv', vim.cmd.Sex)
--- Set document as json and format
 vim.keymap.set('n', '<leader>fj', ':set syntax=json <BAR> :%!jq .<CR>');
--- Split Screen
 vim.keymap.set('n', '<leader>ss', ':split<Return><C-w>w')
--- vim.keymap.set('n', 'sv', ':vsplit<Return><C-w>w')
 vim.keymap.set('n', '<leader>sv', ':vnew<Return>');
--- Move wndow
+
 vim.keymap.set('n', '<leader>tr', ':Telescope resume<Return>');
 
 vim.keymap.set('n', '<Space>', '<C-w>w')
@@ -27,7 +23,6 @@ vim.keymap.set('v', '<leader>d', '"_')
 vim.keymap.set('n', '<leader>y', '"*')
 vim.keymap.set('v', '<leader>y', '"*')
 
--- replace
 vim.keymap.set('n', '<leader>r', ':%s/');
 
 -- For code outline

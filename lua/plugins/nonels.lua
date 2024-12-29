@@ -11,7 +11,6 @@ return {
                 null_ls.builtins.formatting.stylua,
                 --null_ls.builtins.diagnostics.eslint_d,
                 null_ls.builtins.formatting.prettier,
-
                 -- sql
                 null_ls.builtins.formatting.sql_formatter.with({
                     filetypes = { "sql", "mysql" },

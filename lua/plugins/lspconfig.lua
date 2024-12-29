@@ -3,11 +3,11 @@ return {
     config = function()
         require("mason").setup()
         require("mason-lspconfig").setup({
-            ensure_installed = { "lua_ls", "tsserver", "intelephense", "gopls", "sqlls" },
+            ensure_installed = { "lua_ls", "ts_ls", "intelephense", "gopls", "sqlls" },
             automatic_installation = true,
         })
         require("lspconfig").intelephense.setup({})
-        require("lspconfig").tsserver.setup({
+        require("lspconfig").ts_ls.setup({
             on_attach = function(client, bufnr)
                 local bufopts = { noremap = true, silent = true, buffer = bufnr }
                 vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, bufopts)
