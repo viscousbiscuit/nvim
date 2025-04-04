@@ -1,10 +1,13 @@
-require('lualine').setup {
+require("lualine").setup({
     sections = {
-
-        lualine_b = {  "filename" },
-        lualine_c = { "aerial"  },
+        lualine_a = { "branch" },
+        lualine_b = { { "filename", path = 1 } },
+        lualine_c = { "aerial" },
     },
-	options = { 
-		theme = 'tokyonight',
-	}
-}
+    inactive_sections = {
+        lualine_a = { { "filename", path = 1 } },
+    },
+    options = {
+        theme = "tokyonight",
+    },
+})

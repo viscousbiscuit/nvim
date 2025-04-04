@@ -7,16 +7,20 @@ return {
             automatic_installation = true,
         })
         require("lspconfig").intelephense.setup({})
-        require("lspconfig").ts_ls.setup({
-            on_attach = function(client, bufnr)
-                local bufopts = { noremap = true, silent = true, buffer = bufnr }
-                vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, bufopts)
-            end,
-        })
+--        require("lspconfig").ts_ls.setup({
+--            on_attach = function(client, bufnr)
+--                local bufopts = { noremap = true, silent = true, buffer = bufnr }
+--                vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, bufopts)
+--            end,
+--        })
         require("lspconfig").gopls.setup({})
         require("lspconfig").graphql.setup({})
         require("lspconfig").yamlls.setup({})
         require("lspconfig").sqlls.setup({})
+--        require("lspconfig").denols.setup({})
+        require("lspconfig").ts_ls.setup({})
+        require("lspconfig").pyright.setup({})
+
         require("lspconfig").lua_ls.setup({
             settings = {
                 Lua = {
