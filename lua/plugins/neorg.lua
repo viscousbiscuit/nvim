@@ -14,6 +14,7 @@ return {
           config = {
             workspaces = {
               work = "~/viscousbiscuits/notes/work",
+              glueon = "~/viscousbiscuits/notes/glueon",
               gist = "~/viscousbiscuits/notes/gist",
               personal = "~/viscousbiscuits/notes/personal",
               notes = "~/viscousbiscuits/notes",

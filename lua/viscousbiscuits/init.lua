@@ -12,7 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local copilot = require("../plugins/copilot")
-local copilotChat = require("../plugins/copilot-chat")
+-- local copilotChat = require("../plugins/copilot-chat")
 local dashboard = require("../plugins/dashboard")
 local neorg = require("../plugins/neorg")
 local treeSitter = require("../plugins/treesitter")
@@ -22,16 +22,22 @@ local lspconfig = require("../plugins/lspconfig")
 local nonels = require("../plugins/nonels")
 local indentBlankline = require("../plugins/indent-blankline")
 local dapUI = require("../plugins/dap-ui")
+local dbUi = require("../plugins/db-ui")
+local symbolUsage = require("../plugins/symbol-usage")
+local avante = require("../plugins/avante")
 
 local plugins = {
     copilot,
-    copilotChat,
+    --    copilotChat,
+    avante,
     dashboard,
     --  symbolUsage,
     treeSitter,
     -- for scope highlighting
     --  indentBlankline,
     { "nvim-tree/nvim-web-devicons",      lazy = true },
+    { "mason-org/mason.nvim",             version = "^1.0.0" },
+    { "mason-org/mason-lspconfig.nvim",   version = "^1.0.0" },
     { "williamboman/mason.nvim" },
     { "williamboman/mason-lspconfig.nvim" },
     { "wakatime/vim-wakatime" },
@@ -60,7 +66,9 @@ local plugins = {
     { "mfussenegger/nvim-dap",              lazy = true },
     { "stevearc/aerial.nvim" },
     { "mfussenegger/nvim-dap" },
-    { "rcarriga/nvim-dap-ui",               dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
+    dbUi,
+    symbolUsage,
+    { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
     {
         "vhyrro/luarocks.nvim",
         priority = 1000,

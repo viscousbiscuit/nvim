@@ -16,11 +16,10 @@ vim.keymap.set("n", "<C-l>", "<C-w>l")
 vim.keymap.set("n", "<leader>b", ":b<space><tab>")
 vim.keymap.set("n", "<leader>bn", ":enew<return> | :file ")
 
--- black hole delete and clipboard yank
-vim.keymap.set("n", "<leader>d", '"_')
-vim.keymap.set("v", "<leader>d", '"_')
-vim.keymap.set("n", "<leader>y", '"*')
-vim.keymap.set("v", "<leader>y", '"*')
+-- clipboard yank
+vim.keymap.set("n", "Y", '"+y')
+vim.keymap.set("n", "YY", '^"+y$')
+vim.keymap.set("v", "Y", '"+y')
 
 vim.keymap.set("n", "<leader>r", ":%s/")
 
@@ -83,3 +82,38 @@ vim.keymap.set("n", "<leader>ff", vim.lsp.buf.format, {})
 -- DAP
 --vim.keymap.set({ "n", "<Leader>dro", ":lua require('dap').repl.open()<CR>" })
 vim.keymap.set("n", "<Leader>dro", ":lua require('dap').repl.open({}, 'rightbelow split')<CR>")
+
+
+vim.keymap.set("n", "<leader>he", function()
+  local filepath = vim.fn.expand("%:p")
+  local env_file = vim.fn.filereadable(".env") == 1 and "--variables-file .env" or ""
+  vim.cmd("new")
+  vim.cmd("read !hurl " .. env_file .. " " .. filepath)
+  vim.bo.filetype = "json"
+end, { desc = "Run hurl on current buffer file and show JSON output" })
+
+
+vim.keymap.set("n", "<leader>ce", function()
+  local lines = vim.fn.getline(1, "$") -- Get all lines from the current buffer
+  if #lines > 0 and lines[1]:match("^curl%s") then
+    lines[1] = lines[1]:gsub("^curl%s+", "") -- Strip 'curl' from the first line
+  end
+
+  local command_parts = {}
+  for _, line in ipairs(lines) do
+    local stripped_line = line:gsub("\\%s*$", "") -- Remove only trailing '\' and spaces
+    table.insert(command_parts, stripped_line)
+  end
+
+  local curl_command = table.concat(command_parts, " ") -- Combine lines into a single command
+  local output = vim.fn.system('curl ' .. curl_command) -- Execute the curl command
+  vim.cmd("new") -- Open a new split
+  local buf = vim.api.nvim_get_current_buf() -- Get the current buffer in the new split
+  vim.api.nvim_buf_set_lines(buf, 0, -1, false, vim.split(output, "\n")) -- Set output in the new buffer
+
+
+ -- local curl_command = table.concat(command_parts, " ") -- Combine lines into a single command
+ -- vim.cmd("new") -- Open a new split
+ -- vim.cmd("!curl " .. curl_command)
+end, { desc = "Run curl command from current buffer and show output" })
+
