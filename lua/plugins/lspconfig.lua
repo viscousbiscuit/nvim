@@ -1,92 +1,126 @@
 return {
-    "neovim/nvim-lspconfig",
-    config = function()
-        require("mason").setup()
-        require("mason-lspconfig").setup({
-            ensure_installed = { "lua_ls", "ts_ls", "intelephense", "gopls", "sqlls" },
-            automatic_installation = true,
-        })
-        require("lspconfig").intelephense.setup({})
---        require("lspconfig").ts_ls.setup({
---            on_attach = function(client, bufnr)
---                local bufopts = { noremap = true, silent = true, buffer = bufnr }
---                vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, bufopts)
---            end,
---        })
-        require("lspconfig").gopls.setup({})
-        require("lspconfig").graphql.setup({})
-        require("lspconfig").yamlls.setup({})
-        require("lspconfig").sqlls.setup({})
---        require("lspconfig").denols.setup({})
-        require("lspconfig").ts_ls.setup({})
-        require("lspconfig").pyright.setup({})
+	"neovim/nvim-lspconfig",
+	config = function()
+		require("mason").setup()
+		require("mason-lspconfig").setup({
+			ensure_installed = {
+				"lua_ls",
+				"ts_ls",
+				"intelephense",
+				"gopls",
+				"sqlls",
+				"ltex",
+			},
+			automatic_installation = true,
+		})
 
-        require("lspconfig").lua_ls.setup({
-            settings = {
-                Lua = {
-                    runtime = {
-                        version = "LuaJIT",
-                    },
-                    diagnostics = {
-                        -- Get the language server to recognize the `vim` global
-                        globals = {
-                            "vim",
-                            "require",
-                        },
-                    },
-                    workspace = {
-                        library = vim.api.nvim_get_runtime_file("", true),
-                    },
-                    telemetry = {
-                        enable = false,
-                    },
-                },
-            },
-        })
+		vim.lsp.config["intelephense"] = {
+			filetypes = { "php" },
+		}
+		vim.lsp.enable("intelephense")
 
-        -- Setup language servers.
-        -- Global mappings.
-        -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-        vim.keymap.set("n", "<space>e", vim.diagnostic.open_float)
-        vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
-        vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
-        vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist)
+		-- To use the configs, call `vim.lsp.config(…)` instead of `require'lspconfig'[…]`.
+		-- require("lspconfig").intelephense.setup({})
+		-- require("lspconfig").ts_ls.setup({
+		-- 	on_attach = function(client, bufnr)
+		-- 		local bufopts = { noremap = true, silent = true, buffer = bufnr }
+		-- 		vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, bufopts)
+		-- 	end,
+		-- })
 
-        -- Use LspAttach autocommand to only map the following keys
-        -- after the language server attaches to the current buffer
-        vim.api.nvim_create_autocmd("LspAttach", {
-            group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-            callback = function(ev)
-                -- Enable completion triggered by <c-x><c-o>
-                vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
+		-- require("lspconfig").gopls.setup({})
+		-- require("lspconfig").graphql.setup({})
+		-- require("lspconfig").yamlls.setup({})
+		-- require("lspconfig").sqlls.setup({})
+		-- -- require("lspconfig").denols.setup({})
 
-                -- Buffer local mappings.
-                -- See `:help vim.lsp.*` for documentation on any of the below functions
-                local opts = { buffer = ev.buf }
-                vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-                vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-                vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-                vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-                vim.keymap.set("n", "<space><tab>", vim.lsp.buf.signature_help, opts)
-                vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
-                vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
-                vim.keymap.set("n", "<space>wl", function()
-                    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-                end, opts)
-                vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
-                vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
-                vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, opts)
+		-- require("lspconfig").pyright.setup({})
+		-- require("lspconfig").ltex.setup({
+		-- 	settings = {
+		-- 		ltex = {
+		-- 			language = "en",
+		-- 			additionalRules = {
+		-- 				languageModel = "~/language-models/ngrams/",
+		-- 			},
+		-- 			enabled = {
+		-- 				"context.tex",
+		-- 				"html",
+		-- 				"latex",
+		-- 				"markdown",
+		-- 				"mdx",
+		-- 				"md",
+		-- 			},
+		-- 		},
+		-- 	},
+		-- })
 
-                -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-                local telescope = require("telescope.builtin")
-                vim.keymap.set("n", "gr", function()
-                    telescope.lsp_references()
-                end)
+		-- require("lspconfig").lua_ls.setup({
+		-- 	fileTypes = { "lua" },
+		-- 	settings = {
+		-- 		Lua = {
+		-- 			runtime = {
+		-- 				version = "LuaJIT",
+		-- 			},
+		-- 			diagnostics = {
+		-- 				-- Get the language server to recognize the `vim` global
+		-- 				globals = {
+		-- 					"vim",
+		-- 					"require",
+		-- 				},
+		-- 			},
+		-- 			workspace = {
+		-- 				library = vim.api.nvim_get_runtime_file("", true),
+		-- 			},
+		-- 			telemetry = {
+		-- 				enable = false,
+		-- 			},
+		-- 		},
+		-- 	},
+		-- })
 
-                vim.keymap.set("n", "<space>f", function()
-                    vim.lsp.buf.format({ async = true })
-                end, opts)
-            end,
-        })
-    end,
+		-- Setup language servers.
+		-- Global mappings.
+		-- See `:help vim.diagnostic.*` for documentation on any of the below functions
+		vim.keymap.set("n", "<space>e", vim.diagnostic.open_float)
+		vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
+		vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
+		vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist)
+
+		-- Use LspAttach autocommand to only map the following keys
+		-- after the language server attaches to the current buffer
+		vim.api.nvim_create_autocmd("LspAttach", {
+			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+			callback = function(ev)
+				-- Enable completion triggered by <c-x><c-o>
+				vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
+
+				-- Buffer local mappings.
+				-- See `:help vim.lsp.*` for documentation on any of the below functions
+				local opts = { buffer = ev.buf }
+				vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+				vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+				vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+				vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+				vim.keymap.set("n", "<space><tab>", vim.lsp.buf.signature_help, opts)
+				vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
+				vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
+				vim.keymap.set("n", "<space>wl", function()
+					print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+				end, opts)
+				vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
+				vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
+				vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, opts)
+
+				-- vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+				local telescope = require("telescope.builtin")
+				vim.keymap.set("n", "gr", function()
+					telescope.lsp_references()
+				end)
+
+				vim.keymap.set("n", "<space>f", function()
+					vim.lsp.buf.format({ async = true })
+				end, opts)
+			end,
+		})
+	end,
 }

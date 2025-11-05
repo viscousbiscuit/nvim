@@ -48,6 +48,22 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
+-- clear all buffers except for 1
+vim.api.nvim_create_user_command("ClearBuffers", function()
+	local visible_buffers = {}
+	for _, win in ipairs(vim.api.nvim_list_wins()) do
+		visible_buffers[vim.api.nvim_win_get_buf(win)] = true
+	end
+
+	for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+		if vim.api.nvim_buf_is_loaded(buf) and vim.api.nvim_buf_get_option(buf, "buflisted") and not visible_buffers[buf] then
+			vim.cmd("silent! bdelete! " .. buf)
+		end
+	end
+end, {
+	nargs = 0,
+})
+
 -- Telescope
 local telescope = require("telescope.builtin")
 vim.keymap.set("n", "<leader>pf", telescope.find_files, {})

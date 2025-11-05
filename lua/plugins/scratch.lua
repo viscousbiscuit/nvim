@@ -13,6 +13,10 @@ local php_execute_func = require("plugins/scratch/php_execute_func")
 local workspace = "~/scratch"
 
 local langs = {
+    markdown = {
+        name = "markdown",
+        ext = "md"
+    },
 	curl = {
 		name = "curl",
 		ext = "sh",
